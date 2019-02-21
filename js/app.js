@@ -36,6 +36,7 @@ class Enemy {
         if (this.x > 510) {
             this.x = 0;
         }
+        // console.log(this.x);
     }
     // 用来在屏幕上画出敌人
     render() {
@@ -81,13 +82,22 @@ class Player {
                 break;
         }
     }
+    // 加入碰撞检测
+    collision() {
+        allEnemies.forEach(enemy => {
+            let {x,y} = enemy;
+            if ((Math.abs(this.y - y) < 40) && (Math.abs(this.x - x) < 50)) {
+                this.x = 202;
+                this.y = 400;
+            }
+        })
+    }
 
 }
 
 // 现在实例化你的所有对象
 // 把所有敌人的对象都放进一个叫 allEnemies 的数组里面
 
-let count = 1;
 // const enemy = new Enemy(0,(Math.floor(Math.random()*(230-60+1)+60)));
 let allEnemies = [];
 
