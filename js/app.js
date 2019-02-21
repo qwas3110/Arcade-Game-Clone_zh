@@ -32,10 +32,10 @@ class Enemy {
     update(dt) {
         // 你应该给每一次的移动都乘以 dt 参数，以此来保证游戏在所有的电脑上
         // 都是以同样的速度运行的
-        // this.x += this.speed * dt;
-        // if (this.x > 510) {
-        //     this.x = 0;
-        // }
+        this.x += this.speed * dt;
+        if (this.x > 510) {
+            this.x = 0;
+        }
     }
     // 用来在屏幕上画出敌人
     render() {
@@ -57,6 +57,7 @@ class Player {
     update(dt) {
         // 你应该给每一次的移动都乘以 dt 参数，以此来保证游戏在所有的电脑上
         // 都是以同样的速度运行的
+        // console.log(`x:${this.x} : y ${this.y}`);
     }
     // 用来在屏幕上画出玩家
     render() {
@@ -80,6 +81,7 @@ class Player {
                 break;
         }
     }
+
 }
 
 // 现在实例化你的所有对象
@@ -90,8 +92,8 @@ let count = 1;
 let allEnemies = [];
 
 for (let x = 0; x < 5; x++) {
-    let y = Math.floor(Math.random()*(230-60+1)+60);
-    let enemy = new Enemy(0,y);
+    let y = Math.floor(Math.random()*3)*83+65;
+    let enemy = new Enemy(1,y);
     allEnemies.push(enemy);
 }
 
