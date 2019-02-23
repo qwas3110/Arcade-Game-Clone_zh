@@ -1,3 +1,7 @@
+//指定DOM
+const playAgain = document.querySelector(".play-again");
+const result = document.querySelector('.result');
+
 class Enemy {
     constructor(x,y) {
         this.x = x;
@@ -32,10 +36,17 @@ class Player {
         this.sprite = 'images/char-boy.png';
     }
     // 更新玩家的位置，参数dt 表示时间间隙
-    update(dt) {
-        // 你应该给每一次的移动都乘以 dt 参数，以此来保证游戏在所有的电脑上
-        // 都是以同样的速度运行的
-        // console.log(`x:${this.x} : y ${this.y}`);
+    update() {
+        //当玩家到达河边，游戏结束
+        let playY = this.y;
+        if(playY === -15) {
+            setTimeout(function () {
+                result.style.top = "30%";
+                playAgain.addEventListener("click", function f() {
+                    location.reload();
+                })
+            },1000)
+        }
     }
     // 用来在屏幕上画出玩家
     render() {
